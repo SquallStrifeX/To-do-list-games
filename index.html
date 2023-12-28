@@ -12,7 +12,7 @@
 
 <div id="app" class="background">
     <div class="container">
-        <div class="row fixed-bar">
+        <div class="row m-0 fixed-bar">
     <div class="col-4">
         <input type="text" class="form-control " v-show="(Ricerca==1)" placeholder="Ricerca per Titolo" v-model="searchQuery" aria-label="Zip">
         <input type="text" class="form-control " v-show="(Ricerca==2)" placeholder="Ricerca per Genere" v-model="searchGenre" aria-label="Zip"> 
@@ -53,21 +53,21 @@
         </div>
      </div>
     </div>  
-    <div class="row  fixed-bar-down">
-        <div class="col-sm">
+    <div class="row m-0 fixed-bar-down">
+        <div class="col">
             
             <input type="text" class="form-control" placeholder="Titolo" v-model="Titolo" aria-label="State">
           </div>
-          <div class="col-sm">
+          <div class="col">
             <input type="text" class="form-control" placeholder="Genere" v-model="Genere" aria-label="Zip">
           </div>
-        <div class="col-sm">
+        <div class="col">
           <input type="text" class="form-control" placeholder="Tempo" v-model="Tempo" aria-label="State">
         </div>
-        <div class="col-sm">
+        <div class="col">
           <input type="text" class="form-control" placeholder="Difficoltà" v-model="Difficolta" aria-label="Zip">
         </div>
-        <div class="col-sm">
+        <div class="col ">
             <button class="btn btn-success" @click="pushArray()">Aggiungi Gioco</button>
           </div>
       </div>
