@@ -10,44 +10,70 @@
 </head>
 <body>
 
-<div id="app">
-    <div class="col-12">
-        <h1 class="text-center p-4">Lista Giochi da Platinare</h1>
-    </div>
-    
+<div id="app" class="background">
     <div class="container">
-        <div class="row g-3 pt-4 ps-4 pe-4">
-            <div class="col-sm">
-                
-                <input type="text" class="form-control" placeholder="Titolo" v-model="Titolo" aria-label="State">
-              </div>
-              <div class="col-sm">
-                <input type="text" class="form-control" placeholder="Genere" v-model="Genere" aria-label="Zip">
-              </div>
-            <div class="col-sm">
-              <input type="text" class="form-control" placeholder="Tempo" v-model="Tempo" aria-label="State">
-            </div>
-            <div class="col-sm">
-              <input type="text" class="form-control" placeholder="Difficoltà" v-model="Difficolta" aria-label="Zip">
-            </div>
-            <div class="col-sm">
-                <button class="btn btn-success" @click="pushArray()">Aggiungi Gioco</button>
-              </div>
-          </div>
-          <div class="row p-4">
-          <div class="col-8 ">
-            <input type="text" class="form-control " v-show="(Ricerca==1)" placeholder="Ricerca per Titolo" v-model="searchQuery" aria-label="Zip">
-            <input type="text" class="form-control " v-show="(Ricerca==2)" placeholder="Ricerca per Genere" v-model="searchGenre" aria-label="Zip"> 
-          </div>
-         <div class="col-4 ">
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Ricerca Per...</option>
-                <option @click="Ricerca = 1">Ricerca Per Titolo</option>
-                <option @click="Ricerca = 2">Ricerca Per Genere</option>
-              </select>
-         </div>
+        <div class="row fixed-bar">
+    <div class="col-4">
+        <input type="text" class="form-control " v-show="(Ricerca==1)" placeholder="Ricerca per Titolo" v-model="searchQuery" aria-label="Zip">
+        <input type="text" class="form-control " v-show="(Ricerca==2)" placeholder="Ricerca per Genere" v-model="searchGenre" aria-label="Zip"> 
+      </div>
+     <div class="col-2">
+        <select class="form-select" aria-label="Default select example">
+            <option selected>Ricerca Per...</option>
+            <option @click="Ricerca = 1">Ricerca Per Titolo</option>
+            <option @click="Ricerca = 2">Ricerca Per Genere</option>
+          </select>
         </div>
-        <div class="row">
+        <div class="col-6 d-flex">
+            
+            <div>
+                <div class="order-list p-1"  data-bs-toggle="dropdown">
+                    <i class="fa-solid fa-sort fa-xl"></i>
+                </div>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" @click="sortGames()">Ordina per Titolo</a></li>
+                  <li><a class="dropdown-item" href="#" @click="sortgenre()">Ordina per Genere</a></li>
+                  <li><a class="dropdown-item" href="#" @click="sortTime()">Ordina per Tempo</a></li>
+                  <li><a class="dropdown-item" href="#" @click="sortDiff()">Ordina per Difficoltà</a></li>
+
+                </ul>
+              </div>
+              <div>
+                <div class="order-list p-1"  data-bs-toggle="dropdown">
+                    <i class="fa-solid fa-image"></i>
+                </div>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" @click="sortGames()">Ordina per Titolo</a></li>
+                  <li><a class="dropdown-item" href="#" @click="sortgenre()">Ordina per Genere</a></li>
+                  <li><a class="dropdown-item" href="#" @click="sortTime()">Ordina per Tempo</a></li>
+                  <li><a class="dropdown-item" href="#" @click="sortDiff()">Ordina per Difficoltà</a></li>
+
+                </ul>
+              </div>
+        </div>
+     </div>
+    </div>  
+    <div class="row  fixed-bar-down">
+        <div class="col-sm">
+            
+            <input type="text" class="form-control" placeholder="Titolo" v-model="Titolo" aria-label="State">
+          </div>
+          <div class="col-sm">
+            <input type="text" class="form-control" placeholder="Genere" v-model="Genere" aria-label="Zip">
+          </div>
+        <div class="col-sm">
+          <input type="text" class="form-control" placeholder="Tempo" v-model="Tempo" aria-label="State">
+        </div>
+        <div class="col-sm">
+          <input type="text" class="form-control" placeholder="Difficoltà" v-model="Difficolta" aria-label="Zip">
+        </div>
+        <div class="col-sm">
+            <button class="btn btn-success" @click="pushArray()">Aggiungi Gioco</button>
+          </div>
+      </div>
+    <div class="container mt-5">
+       
+        <div class="row pt-4 ">
             <div class="col-6">
                 <ul>
                     <li class="list-unstyled fw-bolder order-list " @click="sortGames()">
@@ -84,8 +110,8 @@
                 </ul>
             </div>
         </div>
-
-        <div class="row list-unstyled" v-for="(item, index) in (searchGenre.length > 1 ? filteredGenre : filteredGames)" :key="index">
+        <div class="container list-container">
+        <div class="row list-unstyled"  v-for="(item, index) in (searchGenre.length > 1 ? filteredGenre : filteredGames)" :key="index">
             <div class="col-6">
                 <ul>
                     <li class="list-unstyled" v-if="editingIndex !== index">
@@ -135,10 +161,12 @@
                     </li>
                 </ul>
             </div>
+            </div>
         </div>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/vue@3"></script>
 <script src="./js/script.js"></script>
 

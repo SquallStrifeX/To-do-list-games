@@ -11,3 +11,37 @@
 .order-list{
     cursor: pointer;
 }
+
+.fixed-bar {
+    position: fixed;
+    height: 60px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333; /* Colore di sfondo */
+    color: #fff; /* Colore del testo */
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombra */
+}
+
+.fixed-bar-down {
+    position: fixed;
+    height: 60px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333; /* Colore di sfondo */
+    color: #fff; /* Colore del testo */
+    padding: 10px; /* Spaziatura interna */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Ombra */
+}
+
+.background{
+    background-image: url(../img/ff7remake.jpg);
+    background-size: contain;
+}
+
+.list-container {
+    max-height: calc(100vh - 150px); /* Imposta l'altezza massima desiderata */
+    overflow-y: auto;
+  }
