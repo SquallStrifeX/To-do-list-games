@@ -1,0 +1,13 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+.width-50{
+    width: 50%;
+}
+
+.order-list{
+    cursor: pointer;
+}
