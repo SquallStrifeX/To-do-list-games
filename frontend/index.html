@@ -10,8 +10,9 @@
 </head>
 <body>
 
-<div id="app" class="background">
-    <div class="container">
+<div id="app" >
+    <div v-bind:style='{ backgroundImage: `url("${sfondo}")` }'>
+    <div class="container " >
         <div class="row m-0 fixed-bar">
     <div class="col-4">
         <input type="text" class="form-control " v-show="(Ricerca==1)" placeholder="Ricerca per Titolo" v-model="searchQuery" aria-label="Zip">
@@ -43,8 +44,8 @@
                     <i class="fa-solid fa-image"></i>
                 </div>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#" @click="sortGames()">Ordina per Titolo</a></li>
-                  <li><a class="dropdown-item" href="#" @click="sortgenre()">Ordina per Genere</a></li>
+                  <li><a class="dropdown-item" href="#" @click="changeBackground('default')">Bianco</a></li>
+                  <li><a class="dropdown-item" href="#" @click="changeBackground('../img/ff7remake.jpg')">Final Fantasy 7 Remake</a></li>
                   <li><a class="dropdown-item" href="#" @click="sortTime()">Ordina per Tempo</a></li>
                   <li><a class="dropdown-item" href="#" @click="sortDiff()">Ordina per Difficoltà</a></li>
 
@@ -160,6 +161,7 @@
                         <button class="btn btn-success" @click="saveEdit(index)">S</button> 
                     </li>
                 </ul>
+            </div>
             </div>
             </div>
         </div>

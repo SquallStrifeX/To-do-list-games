@@ -8,6 +8,7 @@ createApp({
             Ricerca: 1,
             ascendingOrder: true,
             modifica: false,
+            sfondo: './img/ff7remake.jpg',
             Titolo: '',
             Genere: '',
             Tempo: '',
@@ -194,6 +195,7 @@ createApp({
           this.games.sort((a, b) => b.title.localeCompare(a.title));
       }
       this.ascendingOrder = !this.ascendingOrder;
+      console.log(this.sfondo);
     },
     sortgenre() {
       // Cambia l'ordine in base alla variabile di stato
@@ -276,5 +278,14 @@ saveEdit(index) {
       difficulty: ''
   };
 }}, 
+changeBackground(image) {
+  if (image === 'default') {
+      this.sfondo = 'none';
+  } else {
+      this.sfondo = image;
+  }
+},
+
+
 }
 }).mount('#app');
